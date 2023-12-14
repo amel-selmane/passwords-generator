@@ -2,12 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --neon-green: #A4FFAF;
+    --almost-white: #E6E5EA;
+    --very-dark-grey: #18171F;
+}
+
 body { background: linear-gradient(180deg, #14131B 0%, #08070B 100%) }
+
+.password-container p {
+    &.password-generated {
+        color: var(--almost-white);
+    }
+}
 
 .password-container button {
     &:hover {
         svg path {
-            fill: #FFF;
+            fill: white;
         }
     }
 
@@ -18,7 +30,52 @@ body { background: linear-gradient(180deg, #14131B 0%, #08070B 100%) }
         }
 
         svg path {
-            fill: #A4FFAF;
+            fill: var(--neon-green);
+        }
+    }
+}
+
+.config-container input#passwordLength {
+    appearance: none;
+    height: 8px;
+    width: 100%;
+    background-color: var(--very-dark-grey);
+    outline: none;
+    border: none;
+
+    &::-webkit-slider-thumb {
+        appearance: none;
+        height: 28px;
+        width: 28px;
+        border-radius: 50%;
+        background-color: var(--almost-white);
+        cursor: pointer;
+        transition: background-color 200ms;
+    }
+
+    &:active {
+        &::-webkit-slider-thumb {
+            background-color: var(--very-dark-grey);
+            border: 2px solid var(--neon-green);
+        }
+    }
+}
+
+.config-container input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 2px solid var(--almost-white);
+    cursor: pointer;
+
+    &:checked {
+        background-color: var(--neon-green);
+        /* border-color: var(--neon-green); */
+        border-width: 0px;
+
+        &:before {
+            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Crect width='20' height='20' fill='%23A4FFAF'/%3E%3Cpath d='M4 10.6066L7.39341 14L15.3934 6' stroke='%2318171F' stroke-width='3'/%3E%3C/svg%3E");
         }
     }
 }
@@ -26,13 +83,13 @@ body { background: linear-gradient(180deg, #14131B 0%, #08070B 100%) }
 .config-container button[type="submit"] {
     &:active {
         &>div {
-            scale: .75;
+            scale: .90;
         }
     }
 
     &:hover {
         span:nth-child(2) svg path {
-            fill: #A4FFAF;
+            fill: var(--neon-green);
         }
     }
 }

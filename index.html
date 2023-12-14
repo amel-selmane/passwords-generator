@@ -28,41 +28,41 @@
                 </svg>
             </button>
         </div>
-        <form class="config-container bg-dark-grey py-6 px-8 mt-4 mbl:mt-6 text-almost-white">
+        <form class="config-container bg-dark-grey p-4 mbl:px-8 mbl:py-6 mt-4 mbl:mt-6 text-almost-white">
             <div class="flex justify-between items-center">
-                <p class="mbl:text-lg">Character Length</p>
-                <span class="length-value text-neon-green text-2xl mbl:text-[32px]">10</span>
+                <p class="mbl:text-lg select-none">Character Length</p>
+                <span class="length-value text-neon-green text-2xl mbl:text-[32px] select-none">10</span>
             </div>
             <input type="range" min="0" max="20" id="passwordLength" class="mt-2 mbl:mt-6 w-full" />
-            <div class="flex flex-col items-start gap-y-5 mt-8">
-                <div>
-                    <input type="checkbox" name="uppercase" id="uppercase">
-                    <label for="uppercase">Include Uppercase Letters</label>
+            <div class="config-checkboxes flex flex-col items-start gap-y-4 mbl:gap-y-5 mt-8">
+                <div class="cursor-pointer flex items-center gap-x-6">
+                    <input type="checkbox" name="uppercase" id="uppercase" class="cursor-pointer">
+                    <label for="uppercase" class="cursor-pointer mbl:text-lg select-none">Include Uppercase Letters</label>
                 </div>
-                <div>
-                    <input type="checkbox" name="lowercase" id="lowercase">
-                    <label for="lowercase">Include Lowercase Letters</label>
+                <div class="cursor-pointer flex items-center gap-x-6">
+                    <input type="checkbox" name="lowercase" id="lowercase" class="cursor-pointer">
+                    <label for="lowercase" class="cursor-pointer mbl:text-lg select-none">Include Lowercase Letters</label>
                 </div>
-                <div>
-                    <input type="checkbox" name="numbers" id="numbers">
-                    <label for="numbers">Include Numbers</label>
+                <div class="cursor-pointer flex items-center gap-x-6">
+                    <input type="checkbox" name="numbers" id="numbers" class="cursor-pointer">
+                    <label for="numbers" class="cursor-pointer mbl:text-lg select-none">Include Numbers</label>
                 </div>
-                <div>
-                    <input type="checkbox" name="symbols" id="symbols">
-                    <label for="symbols">Include Symbols</label>
+                <div class="cursor-pointer flex items-center gap-x-6">
+                    <input type="checkbox" name="symbols" id="symbols" class="cursor-pointer">
+                    <label for="symbols" class="cursor-pointer mbl:text-lg select-none">Include Symbols</label>
                 </div>
             </div>
             <div class="flex justify-between items-center bg-[#18171F] mt-8 px-4 py-3.5 mbl:px-8 mbl:py-4.5 uppercase">
-                <p class="text-custom-grey mbl:text-lg">Strength</p>
-                <div>
-                    <span class="text-lg mbl:text-2xl">Medium</span>
-                    <span>
-                        
+                <p class="text-custom-grey mbl:text-lg select-none">Strength</p>
+                <div class="flex items-center gap-4">
+                    <span class="text-lg mbl:text-2xl select-none">Medium</span>
+                    <span class="select-none">
+                        LOGO
                     </span>
                 </div>
             </div>
             <button type="submit"
-                class="bg-neon-green text-dark-grey w-full mt-8 py-[14px] mbl:py-4 mbl:text-lg font-bold uppercase transition-all duration-200 border-2 border-neon-green hover:bg-transparent hover:border-2 hover:border-neon-color hover:text-neon-green">
+                class="bg-neon-green text-dark-grey w-full mt-4 mbl:mt-8 py-[14px] mbl:py-4 mbl:text-lg font-bold uppercase transition-all duration-200 border-2 border-neon-green hover:bg-transparent hover:text-neon-green select-none">
                 <div class="flex justify-center items-center gap-3">
                     <span>Generate</span>
                     <span>
