@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwords Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./dist/final.css">
+    <script type="module" src="index.js"></script>
+</head>
+
+<body class="h-screen font-primary">
+    <h1 class="mbl:text-2xl text-base text-custom-grey text-center mt-32">Passwords Generator</h1>
+    <section class="max-w-540 mx-4 mt-4 mbl:mt-8 mbl:mx-auto">
+        <div class="password-container bg-dark-grey pl-8 pr-4 text-custom-grey flex justify-between items-center">
+            <p class="text-2xl mbl:text-[32px] leading-4">P4$5W0rD!</p>
+            <button type="button"
+                class="mbl:py-6 px-4 py-5 active:scale-75 transition-transform before:content-['COPIED\00a0!'] before:text-neon-green before:absolute before:right-3/4 before:mbl:text-lg before:opacity-0 before:transition-all relative">
+                <svg width="18" height="20" viewBox="0 0 18 20" fill="none" class="mbl:w-[21px] mbl:h-6">
+                    <g id="fa-regular_copy">
+                        <path id="Shape" fill-rule="evenodd" clip-rule="evenodd" class="transition-all"
+                            d="M14.9242 0.54918L16.9508 2.57582C17.3025 2.92745 17.5 3.40436 17.5 3.90164V14.375C17.5 15.4105 16.6605 16.25 15.625 16.25H12.5V18.125C12.5 19.1605 11.6605 20 10.625 20H1.875C0.839453 20 0 19.1605 0 18.125V5.625C0 4.58945 0.839453 3.75 1.875 3.75H5V1.875C5 0.839453 5.83945 0 6.875 0H13.5984C14.0956 2.6003e-06 14.5726 0.197548 14.9242 0.54918ZM2.10938 18.125H10.3906C10.4528 18.125 10.5124 18.1003 10.5564 18.0564C10.6003 18.0124 10.625 17.9528 10.625 17.8906V16.25H6.875C5.83945 16.25 5 15.4105 5 14.375V5.625H2.10938C2.04721 5.625 1.9876 5.64969 1.94365 5.69365C1.89969 5.7376 1.875 5.79721 1.875 5.85938V17.8906C1.875 17.9528 1.89969 18.0124 1.94365 18.0564C1.9876 18.1003 2.04721 18.125 2.10938 18.125ZM15.3906 14.375H7.10938C7.04721 14.375 6.9876 14.3503 6.94365 14.3064C6.89969 14.2624 6.875 14.2028 6.875 14.1406V2.10938C6.875 2.04721 6.89969 1.9876 6.94365 1.94365C6.9876 1.89969 7.04721 1.875 7.10938 1.875H11.25V5.3125C11.25 5.83027 11.6697 6.25 12.1875 6.25H15.625V14.1406C15.625 14.2028 15.6003 14.2624 15.5564 14.3064C15.5124 14.3503 15.4528 14.375 15.3906 14.375ZM13.125 4.375H15.625V3.99875C15.625 3.96797 15.6189 3.93749 15.6072 3.90905C15.5954 3.88061 15.5781 3.85477 15.5564 3.83301L13.667 1.94363C13.623 1.89969 13.5634 1.875 13.5012 1.875H13.125V4.375Z"
+                            fill="#A4FFAF" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+        <form class="config-container bg-dark-grey py-6 px-8 mt-4 mbl:mt-6 text-almost-white">
+            <div class="flex justify-between items-center">
+                <p class="mbl:text-lg">Character Length</p>
+                <span class="length-value text-neon-green text-2xl mbl:text-[32px]">10</span>
+            </div>
+            <input type="range" min="0" max="20" id="passwordLength" class="mt-2 mbl:mt-6 w-full" />
+            <div class="flex flex-col items-start gap-y-5 mt-8">
+                <div>
+                    <input type="checkbox" name="uppercase" id="uppercase">
+                    <label for="uppercase">Include Uppercase Letters</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="lowercase" id="lowercase">
+                    <label for="lowercase">Include Lowercase Letters</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="numbers" id="numbers">
+                    <label for="numbers">Include Numbers</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="symbols" id="symbols">
+                    <label for="symbols">Include Symbols</label>
+                </div>
+            </div>
+            <div class="flex justify-between items-center bg-[#18171F] mt-8 px-4 py-3.5 mbl:px-8 mbl:py-4.5 uppercase">
+                <p class="text-custom-grey mbl:text-lg">Strength</p>
+                <div>
+                    <span class="text-lg mbl:text-2xl">Medium</span>
+                    <span>
+                        
+                    </span>
+                </div>
+            </div>
+            <button type="submit"
+                class="bg-neon-green text-dark-grey w-full mt-8 py-[14px] mbl:py-4 mbl:text-lg font-bold uppercase transition-all duration-200 border-2 border-neon-green hover:bg-transparent hover:border-2 hover:border-neon-color hover:text-neon-green">
+                <div class="flex justify-center items-center gap-3">
+                    <span>Generate</span>
+                    <span>
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="bx_arrow-to-left">
+                                <path id="Shape" class="transition-all duration-200"
+                                    d="M5.10553 12L11.1055 6.00002L5.10553 0L3.84051 1.26501L7.681 5.10547L6.10352e-05 5.10547V6.8946L7.681 6.8946L3.84051 10.735L5.10553 12Z"
+                                    fill="#24232C" />
+                            </g>
+                        </svg>
+                    </span>
+                </div>
+            </button>
+        </form>
+    </section>
+</body>
+
+</html>

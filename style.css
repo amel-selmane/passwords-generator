@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { background: linear-gradient(180deg, #14131B 0%, #08070B 100%) }
+
+.password-container button {
+    &:hover {
+        svg path {
+            fill: #FFF;
+        }
+    }
+
+    &.copied {
+        &:before {
+            opacity: 1;
+            right: 100%;
+        }
+
+        svg path {
+            fill: #A4FFAF;
+        }
+    }
+}
+
+.config-container button[type="submit"] {
+    &:active {
+        &>div {
+            scale: .75;
+        }
+    }
+
+    &:hover {
+        span:nth-child(2) svg path {
+            fill: #A4FFAF;
+        }
+    }
+}
