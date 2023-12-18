@@ -1,33 +1,45 @@
 import { generatePassword } from "./utils/generatePassword.js";
+import {
+	handlePasswordLengthCounter,
+	displayCopyTextAnimation,
+	handleStrenghtValue,
+    handleRangeInputUI
+} from "./utils/displayFunctions.js";
 
-const passwordElement = document.querySelector('.password-container p');
-const copyPasswordButtonElement = document.querySelector('.password-container button');
-const configFormElement = document.querySelector('form.config-container');
-const inputRangeElement = document.querySelector('input[type="range"]#passwordLength');
-const lengthValueElement = document.querySelector('.length-value');
+const passwordConfigForm = document.querySelector(".password-config-form");
+const passwordRangeInput = document.querySelector(".password-length-input");
+const passwordLength = document.querySelector(".password-length");
 
 window.onload = () => {
-    lengthValueElement.textContent = inputRangeElement.value;
+	passwordLength.textContent = passwordRangeInput.value;
+
+	(function main() {
+		handlePasswordLengthCounter(passwordRangeInput, passwordLength);
+        handleRangeInputUI();
+		handleCopyPasswordButton();
+		handleSubmitButton();
+	})();
 };
 
-inputRangeElement.addEventListener('input', e => {
-    lengthValueElement.textContent = e.target.value;
-});
+const handleCopyPasswordButton = () => {
+	const copyPasswordButton = document.querySelector(".copy-password-button"),
+		generatedPassword = document.querySelector(".generated-password");
 
-configFormElement.addEventListener('submit', e => {
-    e.preventDefault();
-    
-    generatePassword(passwordElement);
-});
+	copyPasswordButton.addEventListener("click", () => {
+		if (generatedPassword.classList.contains("generated")) {
+			navigator.clipboard.writeText(generatedPassword.textContent);
+			displayCopyTextAnimation(copyPasswordButton);
+		} else {
+			alert("Nothing to copy!");
+		}
+	});
+};
 
-let timeout;
+const handleSubmitButton = () => {
+	passwordConfigForm.addEventListener("submit", e => {
+		e.preventDefault();
 
-copyPasswordButtonElement.addEventListener('click', () => {
-    copyPasswordButtonElement.classList.add('copied');
-    
-    // Clear timeout (if the client click multiple times)
-    clearTimeout(timeout);
-
-    // Assign timeout in the timeout variable
-    timeout = setTimeout(() => copyPasswordButtonElement.classList.remove('copied'), 3000);
-});
+		handleStrenghtValue();
+		generatePassword();
+	});
+};

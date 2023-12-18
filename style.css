@@ -2,94 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --neon-green: #A4FFAF;
-    --almost-white: #E6E5EA;
-    --very-dark-grey: #18171F;
+body {
+	background: linear-gradient(180deg, #14131b 0%, #08070b 100%);
 }
+@layer components {
+	.generated-password.generated {
+		@apply text-almost-white;
+	}
 
-body { background: linear-gradient(180deg, #14131B 0%, #08070B 100%) }
+	.copy-password-button:hover svg path {
+		@apply fill-white;
+	}
 
-.password-container p {
-    &.password-generated {
-        color: var(--almost-white);
-    }
-}
+	.copy-password-button.copied {
+		@apply [&:before]:right-full [&:before]:opacity-100;
 
-.password-container button {
-    &:hover {
-        svg path {
-            fill: white;
-        }
-    }
+		svg path {
+			@apply fill-neon-green;
+		}
+	}
 
-    &.copied {
-        &:before {
-            opacity: 1;
-            right: 100%;
-        }
+	.password-length-input {
+		@apply
+            [&::-webkit-slider-thumb]:cursor-pointer 
+            [&::-webkit-slider-thumb]:opacity-0
+	}
 
-        svg path {
-            fill: var(--neon-green);
-        }
-    }
-}
+	.checkbox-option {
+		@apply h-5 w-5 cursor-pointer appearance-none border-2 border-solid border-almost-white bg-transparent
+            [&:checked:before]:content-checkbox [&:checked]:border-0
+            [&:checked]:bg-neon-green;
+	}
 
-.config-container input#passwordLength {
-    appearance: none;
-    height: 8px;
-    width: 100%;
-    background-color: var(--very-dark-grey);
-    outline: none;
-    border: none;
+	.generate-password-button:active > div {
+		@apply scale-90;
+	}
 
-    &::-webkit-slider-thumb {
-        appearance: none;
-        height: 28px;
-        width: 28px;
-        border-radius: 50%;
-        background-color: var(--almost-white);
-        cursor: pointer;
-        transition: background-color 200ms;
-    }
+	.generate-password-button:hover svg path {
+		@apply fill-neon-green;
+	}
 
-    &:active {
-        &::-webkit-slider-thumb {
-            background-color: var(--very-dark-grey);
-            border: 2px solid var(--neon-green);
-        }
-    }
-}
+	.strenght-indicators {
+		.alight {
+			@apply [&:before]:scale-100;
+		}
 
-.config-container input[type="checkbox"] {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background-color: transparent;
-    border: 2px solid var(--almost-white);
-    cursor: pointer;
+		.weak-red {
+			@apply [&:before]:bg-weak-red;
+		}
 
-    &:checked {
-        background-color: var(--neon-green);
-        /* border-color: var(--neon-green); */
-        border-width: 0px;
+		.weak-orange {
+			@apply [&:before]:bg-weak-orange;
+		}
 
-        &:before {
-            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Crect width='20' height='20' fill='%23A4FFAF'/%3E%3Cpath d='M4 10.6066L7.39341 14L15.3934 6' stroke='%2318171F' stroke-width='3'/%3E%3C/svg%3E");
-        }
-    }
-}
+		.medium-yellow {
+			@apply [&:before]:bg-medium-yellow;
+		}
 
-.config-container button[type="submit"] {
-    &:active {
-        &>div {
-            scale: .90;
-        }
-    }
+		.neon-green {
+			@apply [&:before]:bg-neon-green;
+		}
+	}
 
-    &:hover {
-        span:nth-child(2) svg path {
-            fill: var(--neon-green);
+	.strenght-value-text.defined {
+		@apply opacity-100;
+	}
+
+    .password-length-input {
+        &:hover {
+            & + .password-length-range-value + .password-length-range-thumb {
+                @apply border-neon-green bg-very-dark-grey;
+            }
         }
     }
 }

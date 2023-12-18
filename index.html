@@ -13,12 +13,13 @@
 </head>
 
 <body class="h-screen font-primary">
-    <h1 class="mbl:text-2xl text-base text-custom-grey text-center mt-32">Passwords Generator</h1>
+    <h1 class="mbl:text-2xl text-base text-custom-grey text-center mt-16 mbl:mt-32">Passwords Generator</h1>
     <section class="max-w-540 mx-4 mt-4 mbl:mt-8 mbl:mx-auto">
-        <div class="password-container bg-dark-grey pl-8 pr-4 text-custom-grey flex justify-between items-center">
-            <p class="text-2xl mbl:text-[32px] leading-4">P4$5W0rD!</p>
+        <div
+            class="generated-password-container bg-dark-grey pl-8 pr-4 text-custom-grey flex justify-between items-center">
+            <p class="generated-password text-2xl mbl:text-[32px] leading-4">P4$5W0rD!</p>
             <button type="button"
-                class="mbl:py-6 px-4 py-5 active:scale-75 transition-transform before:content-['COPIED\00a0!'] before:text-neon-green before:absolute before:right-3/4 before:mbl:text-lg before:opacity-0 before:transition-all relative">
+                class="copy-password-button mbl:py-6 px-4 py-5 active:scale-75 transition-transform before:content-['COPIED'] before:text-neon-green before:absolute before:right-3/4 before:mbl:text-lg before:opacity-0 before:transition-all relative will-change-transform">
                 <svg width="18" height="20" viewBox="0 0 18 20" fill="none" class="mbl:w-[21px] mbl:h-6">
                     <g id="fa-regular_copy">
                         <path id="Shape" fill-rule="evenodd" clip-rule="evenodd" class="transition-all"
@@ -28,42 +29,72 @@
                 </svg>
             </button>
         </div>
-        <form class="config-container bg-dark-grey p-4 mbl:px-8 mbl:py-6 mt-4 mbl:mt-6 text-almost-white">
+        <form class="password-config-form bg-dark-grey p-4 mbl:px-8 mbl:py-6 mt-4 mbl:mt-6 text-almost-white">
+            <!-- COUNTER TEXT -->
             <div class="flex justify-between items-center">
-                <p class="mbl:text-lg select-none">Character Length</p>
-                <span class="length-value text-neon-green text-2xl mbl:text-[32px] select-none">10</span>
+                <p class="password-length-title mbl:text-lg select-none">Character Length</p>
+                <span class="password-length text-neon-green text-2xl mbl:text-[32px] select-none">0</span>
             </div>
-            <input type="range" min="0" max="20" id="passwordLength" class="mt-2 mbl:mt-6 w-full" />
-            <div class="config-checkboxes flex flex-col items-start gap-y-4 mbl:gap-y-5 mt-8">
+
+            <!-- COUNTER RANGE INPUT -->
+            <div class="password-length-range relative w-full min-h-[28px] mt-2 mbl:mt-4">
+                <input type="range" min="0" max="20" value="0"
+                    class="password-length-input w-full h-2 appearance-none border-none bg-very-dark-grey outline-none absolute top-2/4 -translate-y-2/4"
+                    aria-labelledby="password-length-title" />
+                <div
+                    class="password-length-range-value w-0 bg-neon-green h-2 absolute top-2/4 -translate-y-2/4 pointer-events-none will-change-[width]">
+                </div>
+                <div
+                    class="password-length-range-thumb h-7 w-7 border-2 border-almost-white bg-almost-white rounded-full absolute left-0 top-2/4 -translate-y-2/4 transition-colors duration-300 pointer-events-none will-change-auto">
+                </div>
+            </div>
+
+            <!-- CHECKBOXES -->
+            <div class="checkboxes-container flex flex-col items-start gap-y-4 mbl:gap-y-5 mt-8">
                 <div class="cursor-pointer flex items-center gap-x-6">
-                    <input type="checkbox" name="uppercase" id="uppercase" class="cursor-pointer">
-                    <label for="uppercase" class="cursor-pointer mbl:text-lg select-none">Include Uppercase Letters</label>
+                    <input type="checkbox" name="uppercase" id="uppercase" class="checkbox-option cursor-pointer">
+                    <label for="uppercase" class="cursor-pointer mbl:text-lg select-none">Include Uppercase
+                        Letters</label>
                 </div>
                 <div class="cursor-pointer flex items-center gap-x-6">
-                    <input type="checkbox" name="lowercase" id="lowercase" class="cursor-pointer">
-                    <label for="lowercase" class="cursor-pointer mbl:text-lg select-none">Include Lowercase Letters</label>
+                    <input type="checkbox" name="lowercase" id="lowercase" class="checkbox-option cursor-pointer">
+                    <label for="lowercase" class="cursor-pointer mbl:text-lg select-none">Include Lowercase
+                        Letters</label>
                 </div>
                 <div class="cursor-pointer flex items-center gap-x-6">
-                    <input type="checkbox" name="numbers" id="numbers" class="cursor-pointer">
+                    <input type="checkbox" name="numbers" id="numbers" class="checkbox-option cursor-pointer">
                     <label for="numbers" class="cursor-pointer mbl:text-lg select-none">Include Numbers</label>
                 </div>
                 <div class="cursor-pointer flex items-center gap-x-6">
-                    <input type="checkbox" name="symbols" id="symbols" class="cursor-pointer">
+                    <input type="checkbox" name="symbols" id="symbols" class="checkbox-option cursor-pointer">
                     <label for="symbols" class="cursor-pointer mbl:text-lg select-none">Include Symbols</label>
                 </div>
             </div>
-            <div class="flex justify-between items-center bg-[#18171F] mt-8 px-4 py-3.5 mbl:px-8 mbl:py-4.5 uppercase">
+
+            <!-- STRENGHT INDICATORS -->
+            <div
+                class="flex justify-between items-center bg-very-dark-grey mt-8 px-4 py-3.5 mbl:px-8 mbl:py-4.5 min-h-[56px] mbl:min-h-[72px] uppercase">
                 <p class="text-custom-grey mbl:text-lg select-none">Strength</p>
                 <div class="flex items-center gap-4">
-                    <span class="text-lg mbl:text-2xl select-none">Medium</span>
-                    <span class="select-none">
-                        LOGO
-                    </span>
+                    <span
+                        class="strenght-value-text text-lg mbl:text-2xl transition duration-900 opacity-0 select-none"></span>
+                    <div class="strenght-indicators select-none flex justify-between gap-2">
+                        <span
+                            class="w-[10px] h-7 border-white border-2 relative [&:before]:content-[''] [&:before]:absolute [&:before]:inset-[-2px] [&:before]:transition-all [&:before]:scale-0"></span>
+                        <span
+                            class="w-[10px] h-7 border-white border-2 relative [&:before]:content-[''] [&:before]:absolute [&:before]:inset-[-2px] [&:before]:transition-all [&:before]:scale-0"></span>
+                        <span
+                            class="w-[10px] h-7 border-white border-2 relative [&:before]:content-[''] [&:before]:absolute [&:before]:inset-[-2px] [&:before]:transition-all [&:before]:scale-0"></span>
+                        <span
+                            class="w-[10px] h-7 border-white border-2 relative [&:before]:content-[''] [&:before]:absolute [&:before]:inset-[-2px] [&:before]:transition-all [&:before]:scale-0"></span>
+                    </div>
                 </div>
             </div>
+
+            <!-- GENERATE (SUBMIT) BUTTON -->
             <button type="submit"
-                class="bg-neon-green text-dark-grey w-full mt-4 mbl:mt-8 py-[14px] mbl:py-4 mbl:text-lg font-bold uppercase transition-all duration-200 border-2 border-neon-green hover:bg-transparent hover:text-neon-green select-none">
-                <div class="flex justify-center items-center gap-3">
+                class="generate-password-button bg-neon-green text-dark-grey w-full mt-4 mbl:mt-8 py-[14px] mbl:py-4 mbl:text-lg font-bold uppercase transition-all duration-200 border-2 border-neon-green hover:bg-transparent hover:text-neon-green select-none">
+                <div class="flex justify-center items-center gap-3 will-change-transform">
                     <span>Generate</span>
                     <span>
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
