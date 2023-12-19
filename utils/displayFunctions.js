@@ -5,7 +5,7 @@ export const displayCopyTextAnimation = button => {
 	// Clear timeout (if the client click multiple times)
 	clearTimeout(passwordCopyTextTimeout);
 
-	// Store timeout in the passwordCopyTextTimeout variable
+	// Store timeout in the passwordCopyTextTimeout variable and remove it after 3s
 	passwordCopyTextTimeout = setTimeout(() => button.classList.remove("copied"), 3000);
 };
 
@@ -22,6 +22,11 @@ export const handlePasswordLengthCounter = (passwordRangeInput, passwordLength) 
 	passwordRangeInput.addEventListener("input", e => (passwordLength.textContent = e.target.value));
 };
 
+/**
+ * To get the green line on range input UI
+ *
+ * @return {void}
+ */
 export const handleRangeInputUI = () => {
 	const passwordRange = document.querySelector(".password-length-range"),
 		passwordRangeValue = document.querySelector(".password-length-range-value"),
@@ -36,49 +41,46 @@ export const handleRangeInputUI = () => {
 	});
 };
 
+const displayStrenghtIndicator = (indicatorText, strenghtValue) => {
+	const strenghtValueText = document.querySelector(".strenght-value-text"),
+		strenghtIndicators = [...document.querySelectorAll(".strenght-indicators span")],
+		indicatorColorClasses = ["weak-red", "weak-orange", "medium-yellow", "neon-green"];
+
+	// Reset the strenght indicators
+	strenghtIndicators.forEach(indicator =>
+		indicator.classList.remove("weak-red", "weak-orange", "medium-yellow", "neon-green", "alight"),
+	);
+
+	// Add a classes on each indicator following the strenght value
+	strenghtIndicators.slice(0, strenghtValue).forEach(indicator => {
+		indicator.classList.add(indicatorColorClasses[strenghtValue - 1], "alight");
+	});
+
+	// Display the strenght value text
+	strenghtValueText.textContent = indicatorText;
+};
+
 /**
  * Defines the strength value of the password and updates the UI accordingly.
  *
  * @return {void}
  */
 export const handleStrenghtValue = () => {
-	const strenghtValueText = document.querySelector(".strenght-value-text"),
-		strenghtIndicators = [...document.querySelectorAll(".strenght-indicators span")],
-		numberOfCheckedCheckboxes = document.querySelectorAll(".checkbox-option:checked").length,
+	const numberOfCheckedCheckboxes = document.querySelectorAll(".checkbox-option:checked").length,
 		passwordRangeInput = document.querySelector(".password-length-input");
-
-	// Reset the strenght indicators
-	strenghtIndicators.forEach(indicator =>
-		indicator.classList.remove("weak-red", "weak-orange", "medium-yellow", "neon-green", "alight"),
-	);
-	strenghtValueText.classList.remove("defined");
-
-	const displayIndicators = (indicatorText, strenghtValue) => {
-		const indicatorColorClasses = ["weak-red", "weak-orange", "medium-yellow", "neon-green"];
-
-		// Add a classes on each indicator following the strenght value
-		strenghtIndicators.slice(0, strenghtValue).forEach(indicator => {
-			indicator.classList.add(indicatorColorClasses[strenghtValue - 1], "alight");
-		});
-
-		// Display the strenght value text
-		strenghtValueText.textContent = indicatorText;
-		strenghtValueText.classList.add("defined");
-	};
 
 	// Update the UI based on strenght value
 	if (numberOfCheckedCheckboxes === 0 || +passwordRangeInput.value === 0) {
-		displayIndicators("", 0);
-		window.alert("Please choose at least one option and a password length greater than 0");
+		displayStrenghtIndicator("", 0);
 	} else if (numberOfCheckedCheckboxes === 1) {
-		displayIndicators("Too weak!", 1);
+		displayStrenghtIndicator("Too weak!", 1);
 	} else if (numberOfCheckedCheckboxes === 2 && +passwordRangeInput.value >= 6) {
-		displayIndicators("Weak", 2);
+		displayStrenghtIndicator("Weak", 2);
 	} else if (numberOfCheckedCheckboxes === 3 && +passwordRangeInput.value >= 6) {
-		displayIndicators("Medium", 3);
+		displayStrenghtIndicator("Medium", 3);
 	} else if (numberOfCheckedCheckboxes === 4 && +passwordRangeInput.value >= 6) {
-		displayIndicators("Strong", 4);
+		displayStrenghtIndicator("Strong", 4);
 	} else {
-		displayIndicators("Too weak!", 1);
+		displayStrenghtIndicator("Too weak!", 1);
 	}
 };

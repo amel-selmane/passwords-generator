@@ -10,10 +10,6 @@ body {
 		@apply text-almost-white;
 	}
 
-	.copy-password-button:hover svg path {
-		@apply fill-white;
-	}
-
 	.copy-password-button.copied {
 		@apply [&:before]:right-full [&:before]:opacity-100;
 
@@ -22,27 +18,16 @@ body {
 		}
 	}
 
-	.password-length-input {
-		@apply
-            [&::-webkit-slider-thumb]:cursor-pointer 
-            [&::-webkit-slider-thumb]:opacity-0
-	}
-
 	.checkbox-option {
 		@apply h-5 w-5 cursor-pointer appearance-none border-2 border-solid border-almost-white bg-transparent
             [&:checked:before]:content-checkbox [&:checked]:border-0
             [&:checked]:bg-neon-green;
 	}
 
-	.generate-password-button:active > div {
-		@apply scale-90;
-	}
-
-	.generate-password-button:hover svg path {
-		@apply fill-neon-green;
-	}
-
 	.strenght-indicators {
+		.indicator {
+			@apply w-[10px] h-7 border-white border-2 relative [&:before]:content-[''] [&:before]:absolute [&:before]:inset-[-2px] [&:before]:transition-transform [&:before]:duration-200 [&:before]:scale-0
+		}
 		.alight {
 			@apply [&:before]:scale-100;
 		}
@@ -63,16 +48,4 @@ body {
 			@apply [&:before]:bg-neon-green;
 		}
 	}
-
-	.strenght-value-text.defined {
-		@apply opacity-100;
-	}
-
-    .password-length-input {
-        &:hover {
-            & + .password-length-range-value + .password-length-range-thumb {
-                @apply border-neon-green bg-very-dark-grey;
-            }
-        }
-    }
 }

@@ -3,7 +3,7 @@ import {
 	handlePasswordLengthCounter,
 	displayCopyTextAnimation,
 	handleStrenghtValue,
-    handleRangeInputUI
+	handleRangeInputUI,
 } from "./utils/displayFunctions.js";
 
 const passwordConfigForm = document.querySelector(".password-config-form");
@@ -15,13 +15,13 @@ window.onload = () => {
 
 	(function main() {
 		handlePasswordLengthCounter(passwordRangeInput, passwordLength);
-        handleRangeInputUI();
-		handleCopyPasswordButton();
-		handleSubmitButton();
+		handleRangeInputUI();
+		onCopyPasswordButton();
+		onSubmitButton();
 	})();
 };
 
-const handleCopyPasswordButton = () => {
+const onCopyPasswordButton = () => {
 	const copyPasswordButton = document.querySelector(".copy-password-button"),
 		generatedPassword = document.querySelector(".generated-password");
 
@@ -35,11 +35,11 @@ const handleCopyPasswordButton = () => {
 	});
 };
 
-const handleSubmitButton = () => {
+passwordConfigForm.addEventListener("change", () => handleStrenghtValue());
+
+const onSubmitButton = () => {
 	passwordConfigForm.addEventListener("submit", e => {
 		e.preventDefault();
-
-		handleStrenghtValue();
 		generatePassword();
 	});
 };
