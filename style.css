@@ -26,7 +26,7 @@ body {
 
 	.strenght-indicators {
 		.indicator {
-			@apply w-[10px] h-7 border-white border-2 relative [&:before]:content-[''] [&:before]:absolute [&:before]:inset-[-2px] [&:before]:transition-transform [&:before]:duration-200 [&:before]:scale-0
+			@apply relative h-7 w-[10px] border-2 border-white [&:before]:absolute [&:before]:inset-[-2px] [&:before]:scale-0 [&:before]:transition-transform [&:before]:duration-200 [&:before]:content-[''];
 		}
 		.alight {
 			@apply [&:before]:scale-100;

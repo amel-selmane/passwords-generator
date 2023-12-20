@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "ES2022",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": true,
+  },
+  "include": [
+    "src"
+  ]
+  // "files": [
+  //   "src/**/*"
+  // ]
+}
