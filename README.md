@@ -8,3 +8,4 @@ Project made with :
 * HTML / CSS
 * Tailwind CSS
 * Javascript
+* Typescript
