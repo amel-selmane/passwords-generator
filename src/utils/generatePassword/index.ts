@@ -4,7 +4,7 @@ export function generatePassword(
 	hasNumbers: boolean, 
 	hasSymbols: boolean, 
 	passwordLength: number
-) {
+): string {
 	const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXZ";
 	const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
 	const symbolChars = '!@#$%^&*()+_-=}{[]|:;"/?.><,`~';

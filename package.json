@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc --watch & tailwindcss -i ./style.css -o ./dist/final.css --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "init": ""
   },
   "author": "",
@@ -14,10 +14,12 @@
     "@stylistic/eslint-plugin-js": "^1.5.1",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
+    "@vitest/coverage-v8": "^1.1.0",
     "eslint": "^8.55.0",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
     "tailwindcss": "^3.3.6",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
   }
 }

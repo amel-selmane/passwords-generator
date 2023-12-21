@@ -1,11 +1,13 @@
-import { generatePassword } from "./utils/generatePassword.js";
+import { generatePassword } from "./utils/generatePassword/index.js";
 import {
 	handlePasswordLengthCounter,
-	displayCopyButtonAnimation,
-	defineStrenghtValue,
-	displayStrenghtValue,
+	displayCopyButtonAnimation,	displayStrenghtValue,
 	handleRangeInputUI,
 } from "./utils/displayFunctions.js";
+
+import {
+	defineStrenghtValue
+} from "./utils/defineStrengthValue.js"
 
 const passwordConfigForm: HTMLFormElement = document.querySelector(".password-config-form")!;
 const passwordRangeInput: HTMLInputElement = document.querySelector(".password-length-input")!;
@@ -15,9 +17,9 @@ function onPushCopyPasswordButton() {
 	const copyPasswordButton: HTMLButtonElement = document.querySelector(".copy-password-button")!;
 	const generatedPassword: HTMLElement = document.querySelector(".generated-password")!;
 
-	copyPasswordButton!.addEventListener("click", () => {
-		if (generatedPassword.classList.contains("generated")) {
-			navigator.clipboard.writeText(generatedPassword.textContent as string);
+	copyPasswordButton.addEventListener("click", () => {
+		if (generatedPassword.classList.contains("generated") && generatedPassword.textContent) {
+			navigator.clipboard.writeText(generatedPassword.textContent);
 			displayCopyButtonAnimation(copyPasswordButton);
 		} else {
 			alert("Nothing to copy!");
@@ -28,7 +30,7 @@ function onPushCopyPasswordButton() {
 passwordConfigForm!.addEventListener("change", () => {
 	const numberOfCheckedCheckboxes = passwordConfigForm.querySelectorAll("input:checked").length;
 
-	const strenghtValue: [string, number] = defineStrenghtValue(numberOfCheckedCheckboxes, passwordRangeInput!);
+	const strenghtValue = defineStrenghtValue(numberOfCheckedCheckboxes, passwordRangeInput);
 	displayStrenghtValue(strenghtValue);
 });
 
