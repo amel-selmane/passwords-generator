@@ -1,13 +1,12 @@
 import { generatePassword } from "./utils/generatePassword/index.js";
 import {
 	handlePasswordLengthCounter,
-	displayCopyButtonAnimation,	displayStrenghtValue,
+	displayCopyButtonAnimation,
+	displayStrenghtValue,
 	handleRangeInputUI,
-} from "./utils/displayFunctions.js";
+} from "./utils/displayFunctions/index.js";
 
-import {
-	defineStrenghtValue
-} from "./utils/defineStrengthValue.js"
+import { defineStrenghtValue } from "./utils/defineStrenghtValue/index.js";
 
 const passwordConfigForm: HTMLFormElement = document.querySelector(".password-config-form")!;
 const passwordRangeInput: HTMLInputElement = document.querySelector(".password-length-input")!;
@@ -30,7 +29,7 @@ function onPushCopyPasswordButton() {
 passwordConfigForm!.addEventListener("change", () => {
 	const numberOfCheckedCheckboxes = passwordConfigForm.querySelectorAll("input:checked").length;
 
-	const strenghtValue = defineStrenghtValue(numberOfCheckedCheckboxes, passwordRangeInput);
+	const strenghtValue = defineStrenghtValue(numberOfCheckedCheckboxes, +passwordRangeInput.value);
 	displayStrenghtValue(strenghtValue);
 });
 

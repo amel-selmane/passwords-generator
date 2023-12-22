@@ -1,5 +1,5 @@
 let passwordCopyTextTimeout: ReturnType<typeof setTimeout>;
-export function displayCopyButtonAnimation(button: HTMLElement) {
+export function displayCopyButtonAnimation(button: HTMLElement): void {
 	button.classList.add("copied");
 
 	// Clear timeout (if the client click multiple times)
@@ -10,7 +10,8 @@ export function displayCopyButtonAnimation(button: HTMLElement) {
 }
 
 export function handlePasswordLengthCounter(passwordRangeInput: HTMLInputElement, passwordLength: HTMLElement): void {
-	passwordLength!.textContent = passwordRangeInput.value;
+	passwordLength.textContent = passwordRangeInput.value;
+
 	passwordRangeInput.addEventListener("input", (e) => {
 		const target = e.target as HTMLInputElement;
 		passwordLength.textContent = target.value;
@@ -25,7 +26,7 @@ export function handleRangeInputUI(): void {
 	passwordRange.addEventListener("input", e => {
 		const target = e.target as HTMLInputElement;
 		const thumbPosition = +target.value / +target.max;
-		const spacing = target.offsetWidth - passwordRangeThumb!.offsetWidth;
+		const spacing = target.offsetWidth - passwordRangeThumb.offsetWidth;
 
 		passwordRangeThumb.style.left = `${thumbPosition * spacing + 1}px`;
 		passwordRangeValue.style.width = `${thumbPosition * 100}%`;
