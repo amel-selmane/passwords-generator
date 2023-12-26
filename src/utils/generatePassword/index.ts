@@ -72,6 +72,6 @@ export function generatePassword(
 			password += characters.substring(randomNumber, randomNumber + 1);
 		}
 	}
-	
+
 	return password;
 }

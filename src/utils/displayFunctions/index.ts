@@ -12,7 +12,7 @@ export function displayCopyButtonAnimation(button: HTMLElement): void {
 export function handlePasswordLengthCounter(passwordRangeInput: HTMLInputElement, passwordLength: HTMLElement): void {
 	passwordLength.textContent = passwordRangeInput.value;
 
-	passwordRangeInput.addEventListener("input", (e) => {
+	passwordRangeInput.addEventListener("input", e => {
 		const target = e.target as HTMLInputElement;
 		passwordLength.textContent = target.value;
 	});
