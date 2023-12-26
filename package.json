@@ -5,9 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "tsc --watch & tailwindcss -i ./style.css -o ./dist/final.css --watch",
-    "test": "vitest",
-    "init": ""
+    "start": "npm-run-all --parallel tailwind:watch typescript:watch",
+    "typescript:watch": "tsc --watch",
+    "tailwind:watch": "tailwindcss -i ./style.css -o ./dist/final.css --watch",
+    "typescript": "tsc",
+    "test": "vitest"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +20,7 @@
     "@vitest/coverage-v8": "^1.1.0",
     "eslint": "^8.55.0",
     "jsdom": "^23.0.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
     "tailwindcss": "^3.3.6",
