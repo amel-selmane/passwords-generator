@@ -9,3 +9,4 @@ Project made with :
 * Tailwind CSS
 * Javascript
 * Typescript
+* Vitest
