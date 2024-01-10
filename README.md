@@ -14,4 +14,5 @@ Project made with :
 
 ## Page URL
 
-[Password generator](amel-selmane.github.io/passwords-generator/)
+[Password generator](https://amel-selmane.github.io/passwords-generator/)
+
