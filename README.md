@@ -4,9 +4,14 @@
 2) Run the project : `npm start`
 3) Open your live server
 
-Project made with : 
+Project made with :
+
 * HTML / CSS
 * Tailwind CSS
 * Javascript
 * Typescript
 * Vitest
+
+## Page URL
+
+[Password generator](amel-selmane.github.io/passwords-generator/)
